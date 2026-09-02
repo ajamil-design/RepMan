@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Reputation Manager</title>
 <link rel="stylesheet" href="styles.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 </head>
 <body>
   <div class="app">
@@ -36,15 +35,95 @@
     <section class="charts-row">
       <div class="chart-card">
         <h3>Rating Trend</h3>
-        <canvas id="ratingTrendChart"></canvas>
+        <div id="ratingTrendChart" class="svg-chart"></div>
       </div>
       <div class="chart-card">
         <h3>Volume by Source</h3>
-        <canvas id="sourceChart"></canvas>
+        <div id="sourceChart" class="svg-chart"></div>
       </div>
       <div class="chart-card">
         <h3>Sentiment Breakdown</h3>
-        <canvas id="sentimentChart"></canvas>
+        <div id="sentimentChart" class="svg-chart"></div>
+      </div>
+    </section>
+
+    <section class="filters-row">
+      <input type="text" id="searchInput" placeholder="Search content or author..." />
+      <select id="sourceFilter"><option value="">All sources</option></select>
+      <select id="sentimentFilter">
+        <option value="">All sentiment</option>
+        <option value="positive">Positive</option>
+        <option value="neutral">Neutral</option>
+        <option value="negative">Negative</option>
+      </select>
+      <select id="statusFilter">
+        <option value="">All statuses</option>
+        <option value="needs_response">Needs response</option>
+        <option value="responded">Responded</option>
+        <option value="resolved">Resolved</option>
+      </select>
+      <button id="clearFiltersBtn" class="btn btn-secondary">Clear</button>
+    </section>
+
+    <section class="reviews-list" id="reviewsList">
+      <!-- review cards injected here -->
+    </section>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="reviewModal">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reputation Manager</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Reputation Manager</h1>
+      <button id="newReviewBtn" class="btn btn-primary">+ Add Mention</button>
+    </header>
+
+    <section class="stats-row" id="statsRow">
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">–</div>
+        <div class="stat-label">Total Mentions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statAvgRating">–</div>
+        <div class="stat-label">Avg Rating</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statNeedsResponse">–</div>
+        <div class="stat-label">Needs Response</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statNegative">–</div>
+        <div class="stat-label">Negative</div>
+      </div>
+    </section>
+
+    <section class="charts-row">
+      <div class="chart-card">
+        <h3>Rating Trend</h3>
+        <div id="ratingTrendChart" class="svg-chart"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Volume by Source</h3>
+        <div id="sourceChart" class="svg-chart"></div>
+      </div>
+      <div class="chart-card">
+        <h3>Sentiment Breakdown</h3>
+        <div id="sentimentChart" class="svg-chart"></div>
       </div>
     </section>
 
