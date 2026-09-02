@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "build": "echo \"no build needed\""
   },
   "dependencies": {}
 }
