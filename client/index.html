@@ -44,7 +44,7 @@
         <div id="sentimentChart" class="svg-chart"></div>
       </div>
     </section>
-    <section class="filters-row">
+        <section class="filters-row">
       <input type="text" id="searchInput" placeholder="Search content or author..." />
       <select id="sourceFilter"><option value="">All sources</option></select>
       <select id="sentimentFilter">
@@ -59,6 +59,12 @@
         <option value="responded">Responded</option>
         <option value="resolved">Resolved</option>
       </select>
+      <label style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">From
+        <input type="date" id="fromFilter" />
+      </label>
+      <label style="font-size:12px;color:#6b7280;display:flex;align-items:center;gap:4px;">To
+        <input type="date" id="toFilter" />
+      </label>
       <button id="clearFiltersBtn" class="btn btn-secondary">Clear</button>
     </section>
     <section class="reviews-list" id="reviewsList">
