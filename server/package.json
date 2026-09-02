@@ -1,0 +1,12 @@
+{
+  "name": "reputation-manager-server",
+  "version": "1.0.0",
+  "description": "Backend + static server for Reputation Manager app (zero external dependencies)",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {}
+}
